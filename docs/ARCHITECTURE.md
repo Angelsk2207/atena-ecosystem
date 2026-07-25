@@ -1,166 +1,162 @@
 # 🏗️ Arquitetura Geral do Ecossistema Atena
 
-## Filosofia Central
+## Filosofia Central: PESO ZERO
 
-> **"Peso Zero"** — Tudo que é pesado roda na nuvem. O celular (POCO C65) é apenas uma interface de transmissão.
-> O cérebro é o Zapia + Skills, que orquestra tudo.
+> **POCO C85** vira **tela burra**. Tudo que é pesado roda em **5 nuvens simultâneas**.
+> Logs e dados são duplicados entre **Airtable e Supabase** pra nunca perder nada.
 
 ---
 
 ## 🌐 Diagrama de Arquitetura
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
-║                    ☁️ NUVEM (Render + Cloudflare)               ║
-║                                                                  ║
-║  ┌──────────────────────────────────────────────────────────┐   ║
-║  │               🧠 ZAPIA (Cérebro Central)                 │   ║
-║  │  ┌──────────┬──────────┬──────────┬──────────────────┐   │   ║
-║  │  │ SKILLS   │  AGENTES │ AUTOMAÇÕES│ DASHBOARD ATENA │   │   ║
-║  │  │ (Módulos)│  (Cron)  │  (Cron)   │ (Visual)        │   │   ║
-║  │  └──────────┴──────────┴──────────┴──────────────────┘   │   ║
-║  └──────────────────────────────────────────────────────────┘   ║
-║                                                                  ║
-║  ┌───────────────┐  ┌───────────────┐  ┌───────────────────┐   ║
-║  │ Cloudflare    │  │  NVIDIA NIM   │  │  Airtable         │   ║
-║  │ Workers AI    │  │  LLMs grátis  │  │  Banco de Dados   │   ║
-║  │ (FLUX, SDXL)  │  │ (Mistral, etc)│  │ (Clientes, Rots)  │   ║
-║  └───────┬───────┘  └───────┬───────┘  └────────┬──────────┘   ║
-║          │                  │                    │               ║
-║          └──────────────────┴────────────────────┘               ║
-║                             │                                    ║
-║                    ┌────────┴────────┐                           ║
-║                    │  Render (n8n)   │                           ║
-║                    │  (FreeLLMAPI)   │                           ║
-║                    └─────────────────┘                           ║
-╚══════════════════════════════════════════════════════════════════╝
-                              │
-                              ▼
-╔══════════════════════════════════════════════════════════════════╗
-║                  📱 POCO C65 (Tela Burra)                       ║
-║                                                                  ║
-║  ┌──────────────────────────────────────────────────────────┐   ║
-║  │  📲 WhatsApp ← canal principal de comunicação            │   ║
-║  │  Áudio → Zapia processa → entrega via WhatsApp          │   ║
-║  │  Tudo que é pesado fica na nuvem                        │   ║
-║  └──────────────────────────────────────────────────────────┘   ║
-║                                                                  ║
-║  RAM: 4-8GB (buffer de transmissão)                             ║
-║  CPU: Helio G85 (só mantém terminal)                            ║
-╚══════════════════════════════════════════════════════════════════╝
+╔══════════════════════════════════════════════════════════════════════════╗
+║                          📱 POCO C85 — TELA BURRA                       ║
+║                                                                          ║
+║  ┌──────────────────────────────────────────────────────────────────┐   ║
+║  │  🟢 WhatsApp (comandos de voz/áudio → Zapia)                    │   ║
+║  │  🟢 Termux (só mantém túnel ativo, não processa nada)           │   ║
+║  │  🔴 NADA de processamento pesado aqui                           │   ║
+║  └──────────────────────────────────────────────────────────────────┘   ║
+║                                    │                                      ║
+║                                    ▼                                      ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+                                    │
+                                    ▼
+╔══════════════════════════════════════════════════════════════════════════╗
+║                          🧠 ZAPIA — CÉREBRO CENTRAL                     ║
+║                                                                          ║
+║  ┌──────────────────────────────────────────────────────────────────┐   ║
+║  │  ▶️ Interpreta comandos                                          │   ║
+║  │  ▶️ Escolhe a skill certa (Airtable, Cloudflare, NVIDIA...)     │   ║
+║  │  ▶️ Agenda automações (31 crons ativos)                         │   ║
+║  │  ▶️ Gerencia agentes (Hunter, CyberGuard, Oracle)               │   ║
+║  │  ▶️ Entrega resultados no WhatsApp                              │   ║
+║  └──────────────────────────────────────────────────────────────────┘   ║
+║                                    │                                      ║
+║          ┌─────────────────────────┼─────────────────────────┐          ║
+║          ▼                         ▼                         ▼          ║
+║     🎨 Skills                 🤖 Agentes              ☁️ 5 Nuvens      ║
+╚══════════════════════════════════════════════════════════════════════════╝
+                                    │
+                                    ▼
+╔══════════════════════════════════════════════════════════════════════════╗
+║                     ☁️ AS 5 NUVENS (Free Tier)                          ║
+║                                                                          ║
+║  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌────────────┐  ║
+║  │  1. RENDER   │  │ 2. CLOUDFLARE│  │  3. KOYEB    │  │4. SNAPDEPLOY║
+║  │              │  │              │  │              │  │            │  ║
+║  │ n8n          │  │ Workers AI   │  │ Backup n8n   │  │ Deploys    │  ║
+║  │ FreeLLMAPI   │  │ R2 Storage   │  │ Backup LLMAPI│  │ rápidos    │  ║
+║  │ Dashboard    │  │ FLUX/SDXL    │  │              │  │            │  ║
+║  └──────────────┘  └──────────────┘  └──────────────┘  └────────────┘  ║
+║                                  ┌──────────────┐                       ║
+║                                  │  5. ZEABUR   │                       ║
+║                                  │              │                       ║
+║                                  │ Redundância  │                       ║
+║                                  │ extra        │                       ║
+║                                  └──────────────┘                       ║
+╚══════════════════════════════════════════════════════════════════════════╝
+                                    │
+                                    ▼
+╔══════════════════════════════════════════════════════════════════════════╗
+║                     🗄️ LOGS E DADOS (Dupla Escrita)                    ║
+║                                                                          ║
+║  ┌──────────────────────────────────────────────────────────────────┐   ║
+║  │  📊 AIRTABLE (já funcionando)                                   │   ║
+║  │     → Clientes, roteiros, relatórios dos agentes, cache         │   ║
+║  │                                                                  │   ║
+║  │  🗄️ SUPABASE (em implementação)                                 │   ║
+║  │     → Backup de TUDO que está no Airtable                       │   ║
+║  │     → Se Airtable cair, Supabase assume                         │   ║
+║  └──────────────────────────────────────────────────────────────────┘   ║
+║                                    │                                      ║
+║                                    ▼                                      ║
+║                     🐙 GitHub Público (Código)                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-## 🔄 Fluxo de Processamento
+## 🔄 Fluxo de Funcionamento
 
-### Como cada ação flui do comando à execução
-
+### 1️⃣ Você Fala
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                    FLUXO PRINCIPAL                               │
-│                                                                  │
-│  📱 Jessica fala                                                │
-│    ↓                                                             │
-│  🎤 Áudio chega no Zapia                                        │
-│    ↓                                                             │
-│  🧠 Zapia interpreta o pedido (processamento na nuvem)          │
-│    ↓                                                             │
-│  🔍 Escolhe a Skill certa:                                      │
-│    ├── **airtable** → CRUD no banco de dados                    │
-│    ├── **cloudflare-ai** → gera imagem                          │
-│    ├── **nvidia-nim** → consulta LLM                            │
-│    ├── **copy-angel** → escreve roteiro/texto                   │
-│    ├── **design-angel** → pesquisa referências + gera imagem    │
-│    ├── **hunter-angelos** → varre novas tecnologias             │
-│    └── **agentes cron** → execução automática programada        │
-│    ↓                                                             │
-│  ✅ Resposta volta pro WhatsApp da Jessica                      │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
+Jessica: "Zapia, cria roteiro da Luísa sobre [tema]"
+   │
+   ▼
+WhatsApp → Zapia (nuvem) → interpreta áudio
 ```
 
----
-
-## 🧩 Distribuição dos Agentes em Turnos
-
+### 2️⃣ Zapia Processa
 ```
-                    ╔════════════════════════╗
-                    ║     LINHA DO TEMPO     ║
-                    ╚════════════════════════╝
+Zapia entende → escolhe a skill certa
+   │
+   ├── copy-angel → escreve roteiro
+   ├── airtable → salva log
+   └── cloudflare-ai → gera imagem se precisar
+```
 
-🌅 06:00 ─── 👻 HUNTER Turno 1 (Caçada Pesada)
-                 🛡️ CYBERGUARD Turno 1 (Port Scan + Threat)
-
-🌤️ 12:00 ─── 👻 HUNTER Turno 2 (Deep Doc)
-                 🛡️ CYBERGUARD Turno 2 (Firewall + Conexões)
-
-🌙 18:00 ─── 👻 HUNTER Turno 3 (Vigilância)
-                 🛡️ CYBERGUARD Turno 3 (Completo)
-
-🌃 Após cada ── 👁️ ORACLE (Supervisor: coleta + resume)
-
-📅 Diário ─── 08:30 → Limpeza de e-mail (seg-sex)
-                23:00 → Roteiros Dra. Luísa
-
-📅 Semanal ── Sáb 08:00 → Roteiros Dr. Luciano
-                 Sáb 09:00 → Roteiros Angel Sakura
+### 3️⃣ Resultado Volta
+```
+Roteiro pronto → salvo no Airtable → log duplicado no Supabase
+   │
+   ▼
+WhatsApp: "Pronto! Aqui estão os 3 roteiros da Luísa 📝"
 ```
 
 ---
 
-## 🗂️ Estrutura de Dados
+## 🔄 Fluxo dos Agentes (24/7)
 
 ```
-                    ┌──────────────────────────┐
-                    │      AIRTABLE            │
-                    │   (Banco principal)      │
-                    │                          │
-                    │  📋 Tabela: Clientes     │
-                    │  ├── Nome                │
-                    │  ├── Tipo de conteúdo    │
-                    │  ├── Formato             │
-                    │  └── Horários            │
-                    │                          │
-                    │  📋 Tabela: Roteiros     │
-                    │  ├── Cliente (FK)        │
-                    │  ├── Data                │
-                    │  ├── Turno (manhã/12h/18h)│
-                    │  └── Conteúdo            │
-                    │                          │
-                    │  📋 Tabela: Skill Cache  │
-                    │  └── Dados temporários   │
-                    └──────────────────────────┘
-```
-
----
-
-## 🛡️ Segurança e Tolerância a Falhas
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    TOLERÂNCIA A FALHAS                           │
-│                                                                  │
-│  🔴 Se Hunter falhar → CyberGuard continua → Oracle avisa       │
-│  🔴 Se CyberGuard falhar → Hunter continua → Oracle avisa       │
-│  🔴 Se Oracle falhar → Agentes rodam sem supervisão             │
-│  🔴 Se Airtable cair → Dados ainda em cache local               │
-│  🔴 Se Render cair → Koyeb/Zeabur/SnapDeploy assumem            │
-│                                                                  │
-│  🟢 Múltiplos provedores de nuvem = zero downtime               │
-│  🟢 Cada agente é independente = falha isolada                  │
-│  🟢 Dados no Airtable, não no servidor = dados seguros          │
-└─────────────────────────────────────────────────────────────────┘
+            ┌──────────────────┐
+            │  👻 HUNTER       │ ← Caça tecnologias (06h/12h/18h)
+            │  Tecnologia      │
+            └──────┬───────────┘
+                   │ relatório
+                   ▼
+┌──────────────────┬──────────────────┐
+│  🛡️ CYBERGUARD  │                  │
+│  Segurança      │   👁️ ORACLE      │ ← Supervisor
+│  (06h/12h/18h)  │   Coleta tudo    │
+└──────┬───────────┘   Gera resumo    │
+       │ relatório     Alerta se      │
+       └─────────────── crítico       │
+                      └──────┬────────┘
+                             │
+                ┌────────────┼────────────┐
+                ▼            ▼            ▼
+           Airtable     Supabase    WhatsApp (se crítico)
 ```
 
 ---
 
-## 🎯 Princípios de Design da Arquitetura
+## 🛡️ Tolerância a Falhas
 
-1. **Peso Zero** — Celular só transmite, nuvem processa
-2. **Modular** — Cada skill/agente é independente
-3. **Auto-evolutivo** — Hunter encontra melhorias, aplica sem permissão
-4. **Free Tier First** — Tudo dentro do plano gratuito
-5. **Documentado** — Cada peça tem seu documento de referência
-6. **Resiliente** — Múltiplas nuvens, tolerância a falhas
-7. **Foco em áudio** — Jessica fala, Zapia processa, WhatsApp entrega
+| Cenário | O que acontece |
+|---------|---------------|
+| Render cai | Koyeb assume |
+| Koyeb cai | Zeabur assume |
+| Cloudflare cai | NVIDIA NIM (texto) ainda funciona |
+| Airtable cai | Supabase mantém os dados |
+| Supabase cai | Airtable mantém os dados |
+| POCO C85 desliga | Nada — ele só transmite, nuvem continua |
+
+---
+
+## 📊 Componentes por Nuvem
+
+| Nuvem | Serviço | Função | Status |
+|-------|---------|--------|--------|
+| ☁️ Render | n8n | Orquestrador de workflows | 🟢 |
+| ☁️ Render | FreeLLMAPI | 69 modelos de IA (proxy) | 🟢 |
+| ☁️ Render | Dashboard Atena | Painel de controle | 🟢 |
+| ☁️ Cloudflare | Workers AI | Geração de imagem (FLUX, SDXL) | 🟢 |
+| ☁️ Cloudflare | R2 | Armazenamento (10GB free) | 🟢 |
+| ☁️ Cloudflare | Tunnel | Conexão segura sem IP exposto | 🟢 |
+| ☁️ Koyeb | Backup n8n | Redundância do Render | ⏳ |
+| ☁️ SnapDeploy | Deploys rápidos | Testes e protótipos | ⏳ |
+| ☁️ Zeabur | Redundância extra | Última camada de fallback | ⏳ |
+| 🗄️ Airtable | Banco principal | Dados ativos | 🟢 |
+| 🗄️ Supabase | Banco secundário | Backup e redundância | 🔄 |
