@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Inter, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#646464"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#FFFFFF" rx="8"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#141414">🌌 ATENA ECOSYSTEM — Arquitetura Geral</text>
+  <text x="600" y="62" text-anchor="middle" font-size="13" fill="#646464">Sistema de Agentes e Automação Inteligente | Peso Zero na Nuvem</text>
+
+  <!-- ==================== SECTION 1: CELULAR ==================== -->
+  <rect x="30" y="85" width="1140" height="120" rx="8" fill="#F8F9FA" stroke="#232F3E" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="50" y="108" font-size="14" font-weight="bold" fill="#232F3E">📱 CELULAR — Tela Burra (POCO C65)</text>
+  <text x="50" y="128" font-size="11" fill="#646464">Só transmite. O celular mantém o terminal rodando, não processa nada pesado.</text>
+
+  <!-- User -->
+  <rect x="80" y="140" width="180" height="50" rx="25" fill="#E8F0FE" stroke="#232F3E" stroke-width="1.5"/>
+  <text x="170" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#141414">👤 Jessica Gaya</text>
+
+  <!-- Arrow -->
+  <line x1="260" y1="165" x2="320" y2="165" stroke="#646464" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- WhatsApp -->
+  <rect x="320" y="140" width="180" height="50" rx="25" fill="#DCF8C6" stroke="#25D366" stroke-width="1.5"/>
+  <text x="410" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#141414">📲 WhatsApp</text>
+
+  <!-- Arrow to Zapia -->
+  <line x1="500" y1="165" x2="560" y2="165" stroke="#646464" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== SECTION 2: ZAPIA ==================== -->
+  <rect x="30" y="220" width="1140" height="280" rx="8" fill="#FFF8F0" stroke="#FF9900" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="50" y="243" font-size="14" font-weight="bold" fill="#FF9900">🧠 ZAPIA — Cérebro Central (Orquestrador)</text>
+  <text x="50" y="263" font-size="11" fill="#646464">Interpreta comandos, escolhe a skill certa, gerencia agentes e executa automações programadas.</text>
+
+  <!-- Zapia Core -->
+  <rect x="80" y="275" width="220" height="60" rx="10" fill="#232F3E" stroke="#FF9900" stroke-width="2"/>
+  <text x="190" y="300" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">🧠 Zapia AI</text>
+  <text x="190" y="320" text-anchor="middle" font-size="11" fill="#FFD700">Cérebro do ecossistema</text>
+
+  <!-- Skills -->
+  <rect x="380" y="275" width="170" height="55" rx="8" fill="#FCE7F3" stroke="#F472B6" stroke-width="1.5"/>
+  <text x="465" y="298" text-anchor="middle" font-size="12" font-weight="bold" fill="#BE185D">🎨 Skills de Criação</text>
+  <text x="465" y="318" text-anchor="middle" font-size="10" fill="#BE185D">Copy-Angel, Design-Angel</text>
+
+  <rect x="570" y="275" width="170" height="55" rx="8" fill="#E0F2FE" stroke="#60A5FA" stroke-width="1.5"/>
+  <text x="655" y="298" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E40AF">🗄️ Skills de Dados</text>
+  <text x="655" y="318" text-anchor="middle" font-size="10" fill="#1E40AF">Airtable, Cloudflare AI</text>
+
+  <rect x="760" y="275" width="170" height="55" rx="8" fill="#EDE9FE" stroke="#A066F0" stroke-width="1.5"/>
+  <text x="845" y="298" text-anchor="middle" font-size="12" font-weight="bold" fill="#5B21B6">🤖 Skills de IA</text>
+  <text x="845" y="318" text-anchor="middle" font-size="10" fill="#5B21B6">NVIDIA NIM, Cloudflare</text>
+
+  <!-- Arrows from Zapia to skills -->
+  <line x1="300" y1="305" x2="380" y2="305" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="300" y1="305" x2="570" y2="300" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="300" y1="305" x2="760" y2="300" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Agents Section -->
+  <text x="50" y="370" font-size="13" font-weight="bold" fill="#232F3E">🤖 Agentes de Monitoramento (Cron 24/7)</text>
+
+  <rect x="80" y="385" width="220" height="45" rx="8" fill="#EDE9FE" stroke="#A066F0" stroke-width="1.5"/>
+  <text x="190" y="405" text-anchor="middle" font-size="12" font-weight="bold" fill="#5B21B6">👻 HUNTER</text>
+  <text x="190" y="420" text-anchor="middle" font-size="10" fill="#5B21B6">Caça tech 06h/12h/18h</text>
+
+  <rect x="330" y="385" width="220" height="45" rx="8" fill="#EDE9FE" stroke="#A066F0" stroke-width="1.5"/>
+  <text x="440" y="405" text-anchor="middle" font-size="12" font-weight="bold" fill="#5B21B6">🛡️ CYBERGUARD</text>
+  <text x="440" y="420" text-anchor="middle" font-size="10" fill="#5B21B6">Segurança 06h/12h/18h</text>
+
+  <rect x="580" y="385" width="220" height="45" rx="8" fill="#EDE9FE" stroke="#A066F0" stroke-width="1.5"/>
+  <text x="690" y="405" text-anchor="middle" font-size="12" font-weight="bold" fill="#5B21B6">👁️ ORACLE</text>
+  <text x="690" y="420" text-anchor="middle" font-size="10" fill="#5B21B6">Supervisor após cada turno</text>
+
+  <!-- Cron schedules -->
+  <rect x="830" y="385" width="220" height="45" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="940" y="405" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">📝 Crons de Conteúdo</text>
+  <text x="940" y="420" text-anchor="middle" font-size="10" fill="#92400E">Roteiros 23h / 08h / 09h</text>
+
+  <!-- ==================== SECTION 3: NUVEM ==================== -->
+  <rect x="30" y="515" width="1140" height="200" rx="8" fill="#F0F9FF" stroke="#60A5FA" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="50" y="538" font-size="14" font-weight="bold" fill="#1E40AF">☁️ NUVEM — Serviços Cloud (Free Tier)</text>
+  <text x="50" y="558" font-size="11" fill="#646464">Tudo roda em serviços gratuitos. Múltiplos provedores garantem redundância.</text>
+
+  <!-- Render -->
+  <rect x="80" y="575" width="200" height="65" rx="8" fill="#FEF2F2" stroke="#E86060" stroke-width="1.5"/>
+  <text x="180" y="598" text-anchor="middle" font-size="13" font-weight="bold" fill="#DC2626">⚙️ Render</text>
+  <text x="180" y="615" text-anchor="middle" font-size="10" fill="#DC2626">n8n + FreeLLMAPI</text>
+  <text x="180" y="630" text-anchor="middle" font-size="10" fill="#DC2626">+ Dashboard Atena</text>
+
+  <!-- Cloudflare -->
+  <rect x="310" y="575" width="200" height="65" rx="8" fill="#E0F2FE" stroke="#60A5FA" stroke-width="1.5"/>
+  <text x="410" y="598" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E40AF">🌩️ Cloudflare</text>
+  <text x="410" y="615" text-anchor="middle" font-size="10" fill="#1E40AF">Workers AI + R2 Storage</text>
+  <text x="410" y="630" text-anchor="middle" font-size="10" fill="#1E40AF">FLUX, SDXL, Dreamshaper</text>
+
+  <!-- NVIDIA -->
+  <rect x="540" y="575" width="200" height="65" rx="8" fill="#FCE7F3" stroke="#F472B6" stroke-width="1.5"/>
+  <text x="640" y="598" text-anchor="middle" font-size="13" font-weight="bold" fill="#BE185D">💜 NVIDIA NIM</text>
+  <text x="640" y="615" text-anchor="middle" font-size="10" fill="#BE185D">121+ modelos LLM</text>
+  <text x="640" y="630" text-anchor="middle" font-size="10" fill="#BE185D">Mistral, Qwen, Llama</text>
+
+  <!-- Airtable -->
+  <rect x="770" y="575" width="200" height="65" rx="8" fill="#D1FAE5" stroke="#34D399" stroke-width="1.5"/>
+  <text x="870" y="598" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">🗄️ Airtable</text>
+  <text x="870" y="615" text-anchor="middle" font-size="10" fill="#047857">Banco de dados</text>
+  <text x="870" y="630" text-anchor="middle" font-size="10" fill="#047857">Clientes, Roteiros, Cache</text>
+
+  <!-- GitHub -->
+  <rect x="1000" y="575" width="140" height="65" rx="8" fill="#F0F0F0" stroke="#333333" stroke-width="1.5"/>
+  <text x="1070" y="598" text-anchor="middle" font-size="13" font-weight="bold" fill="#333333">🐙 GitHub</text>
+  <text x="1070" y="615" text-anchor="middle" font-size="10" fill="#333333">Código + Portfólio</text>
+  <text x="1070" y="630" text-anchor="middle" font-size="10" fill="#333333">Repositórios públicos</text>
+
+  <!-- Arrows from Zapia to cloud -->
+  <line x1="190" y1="500" x2="180" y2="575" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="410" y1="500" x2="410" y2="575" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="640" y1="500" x2="640" y2="575" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="870" y1="500" x2="870" y2="575" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="1070" y1="500" x2="1070" y2="575" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ==================== SECTION 4: CLIENTES ==================== -->
+  <rect x="30" y="730" width="1140" height="100" rx="8" fill="#FFF7ED" stroke="#FF9900" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="50" y="753" font-size="14" font-weight="bold" fill="#FF9900">📊 CLIENTES — Conteúdo Produzido</text>
+  <text x="50" y="773" font-size="11" fill="#646464">Roteiros gerados pelo Zapia, entregues via WhatsApp e postados nas redes.</text>
+
+  <rect x="80" y="785" width="300" height="35" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="230" y="808" text-anchor="middle" font-size="12" font-weight="bold" fill="#DC2626">👩‍⚖️ Dra. Luísa — Direito Criminal</text>
+
+  <rect x="420" y="785" width="300" height="35" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="570" y="808" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">👨‍⚖️ Dr. Luciano — Direito Civil</text>
+
+  <rect x="760" y="785" width="300" height="35" rx="8" fill="#FCE7F3" stroke="#F472B6" stroke-width="1.5"/>
+  <text x="910" y="808" text-anchor="middle" font-size="12" font-weight="bold" fill="#BE185D">🎯 Angel Sakura — Design + Tech</text>
+
+  <!-- Arrows from cloud to clients -->
+  <line x1="230" y1="715" x2="230" y2="785" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="570" y1="715" x2="570" y2="785" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="910" y1="715" x2="910" y2="785" stroke="#646464" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Legend -->
+  <text x="1050" y="863" text-anchor="end" font-size="10" fill="#646464">📅 Gerado em 2026-07-24 | Atena Ecosystem v1.0</text>
+</svg>
